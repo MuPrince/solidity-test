@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "createContranct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "creator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contract/TestFactory.sol": "TestFactory"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contract/TestFactory.sol": {
+			"keccak256": "0x691824d275f50630c3d8595e7cfde649350fa2fd619bf52df0f34ad840fbc3d2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fa12d0a2620bf300d8d7a10048b6e412ac491f79b2f90b384fc2f4e9d3ee06db",
+				"dweb:/ipfs/QmQDpmuLnmV2M2RvDZbGKsMJdbv8nf965rDEDthYgWfTqh"
+			]
+		},
+		"contract/TipJar.sol": {
+			"keccak256": "0x4bef53081e32d4a7884b65e7a55ada9b67192d20e4a08130d0cd5241ed7fde72",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://96d03fc9e5fb6d92c826cea1458e6edb12d03f7c8a5d8303d460bd92fdd06a22",
+				"dweb:/ipfs/QmcnZkQTdkL9fKB2pP9M56jZiZcvcFTcs9bHE7iJzT6g8r"
+			]
+		}
+	},
+	"version": 1
+}
