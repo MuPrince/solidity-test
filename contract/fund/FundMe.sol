@@ -9,25 +9,37 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 // 4. 在锁定期内，没有达到目标值。投资人可以退款
 
 contract FunMe {
+    // 投入明细
     mapping(address => uint256) public investments;
-
+    // 最小投入
     uint256 constant MINIMUM_VALUE = 100 * 10**18; //ETH
 
     AggregatorV3Interface internal dataFeed;
-
+    // 目标
     uint256 constant TARGET = 1000 * 10 ** 18;
+    // 合约拥有者
+    address public owner;
+    // 部署时间戳
+    uint256 deploymentTimestamp;
+    // 锁定期时长
+    uint256 lockTime;
 
-    address owner;
-
-    constructor() {
+    constructor(uint256 _lockTime) {
         dataFeed = AggregatorV3Interface(
             0x694AA1769357215DE4FAC081bf1f309aDC325306
         );
         owner = msg.sender;
+        deploymentTimestamp = block.timestamp;
+        lockTime = _lockTime;
     }
 
     modifier onlyOwner() {
         require(msg.sender == owner, "This function can only be called by the current owner.");
+        _;
+    }
+
+    modifier windowClosed() {
+        require((deploymentTimestamp + lockTime) < block.timestamp, "Window is not closed.");
         _;
     }
 
@@ -38,6 +50,7 @@ contract FunMe {
             convertEthToUsd(msg.value) >= MINIMUM_VALUE,
             "Value is too low!"
         );
+        require((deploymentTimestamp + lockTime) > block.timestamp, "Window is closed.");
         uint256 myAmount = investments[msg.sender];
         myAmount += msg.value;
         investments[msg.sender] = myAmount;
@@ -63,7 +76,7 @@ contract FunMe {
         return (ethAmount * ethPrice) / (10**8);
     }
 
-    function getFund () external onlyOwner {
+    function getFund () external onlyOwner windowClosed {
         require(convertEthToUsd(address(this).balance) >= TARGET, "Target is not reached.");
 
         
@@ -90,7 +103,7 @@ contract FunMe {
         owner = newOwner;
     }
 
-    function refund() external {
+    function refund() external windowClosed {
         require((convertEthToUsd(address(this).balance) < TARGET), "Target is reached.");
         require(investments[msg.sender] != 0, "There is no funds for you.");
 
