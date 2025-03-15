@@ -14,21 +14,33 @@ import {TipJar} from "./TipJar.sol"; //  引入本地合约
 */
 contract TestFactory{
 
-    address public creator;
-    address public currentOwner;
-
     TipJar tj;
 
+    mapping (string => TipJar) tjs;
 
-    constructor() {
-        creator = msg.sender;
-        currentOwner = creator; 
+    function createContranct(string memory _name) public {
+        tj = new TipJar();
+        tjs[_name] = tj;
     }
 
-
-    function createContranct() public {
-        
-
+    function getTipJar(string memory _name) public view returns (TipJar){
+        TipJar namedTj =  tjs[_name]; // 返回合约
+        return namedTj;  
+    }
+    
+    function deleteContranct(string memory _name) public {
+        delete tjs[_name];
     }
 
+    function callTipJarTip(string memory _name) public payable {
+        tjs[_name].tip();
+    }
+
+    function callTipJarWithdraw(string memory _name) public  {
+        tjs[_name].withdraw();
+    }
+
+    function callGetBalance(string memory _name) public view returns (uint256) {
+        return tjs[_name].getBalance();
+    }
 }

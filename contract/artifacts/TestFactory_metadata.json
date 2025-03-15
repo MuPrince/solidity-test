@@ -6,36 +6,88 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [],
-				"name": "createContranct",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "creator",
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "callGetBalance",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "currentOwner",
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "callTipJarTip",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "callTipJarWithdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "createContranct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "deleteContranct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "getTipJar",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "contract TipJar",
 						"name": "",
 						"type": "address"
 					}
@@ -72,11 +124,11 @@
 	},
 	"sources": {
 		"contract/TestFactory.sol": {
-			"keccak256": "0x691824d275f50630c3d8595e7cfde649350fa2fd619bf52df0f34ad840fbc3d2",
+			"keccak256": "0xfe86050d07c6e60ee0206ca774dce6c78dbc9f15c2527aa68f845d1e1eb474cf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fa12d0a2620bf300d8d7a10048b6e412ac491f79b2f90b384fc2f4e9d3ee06db",
-				"dweb:/ipfs/QmQDpmuLnmV2M2RvDZbGKsMJdbv8nf965rDEDthYgWfTqh"
+				"bzz-raw://b4622f307ee408df9cce2e0ce0a7411afef19881238f118640d526f043e1e2cd",
+				"dweb:/ipfs/QmUgyapMp94EqUXCRbHEtXh6ABRR6jri1H7Ygk4Su9K4AD"
 			]
 		},
 		"contract/TipJar.sol": {
