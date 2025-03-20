@@ -10,7 +10,9 @@ contract FundToken is ERC20 {
     // 4. owner地址
     // 5. balance address => uint256
 
-    // mint: 
+    // mint: 获取通证
+    // transfer： transfer通证
+    // balanceOf：查看某一个地址的通证数量
 
     constructor() ERC20("FundToken", "FT") {}
 }
