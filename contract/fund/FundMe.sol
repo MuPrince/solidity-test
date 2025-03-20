@@ -8,7 +8,7 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 // 3. 在锁定期内，达到目标值，生产商可以提款
 // 4. 在锁定期内，没有达到目标值。投资人可以退款
 
-contract FunMe {
+contract FundMe {
     // 投入明细
     mapping(address => uint256) public investments;
     // 最小投入
@@ -23,6 +23,10 @@ contract FunMe {
     uint256 deploymentTimestamp;
     // 锁定期时长
     uint256 lockTime;
+
+    address erc20Addr;
+
+    bool public getFundSuccess = false;
 
     constructor(uint256 _lockTime) {
         dataFeed = AggregatorV3Interface(
@@ -97,6 +101,8 @@ contract FunMe {
         bool successful;
         (successful, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(successful, "Transfer tx failed.");
+        investments[msg.sender] = 0;
+        getFundSuccess = true;
     }
 
     function transferOwnership(address newOwner) public onlyOwner {
@@ -111,5 +117,14 @@ contract FunMe {
         (successful, ) = payable(msg.sender).call{value: investments[msg.sender]}("");
         require(successful, "Transfer tx failed.");
         investments[msg.sender] = 0;
+    }
+
+    function setErc20Addr(address _erc20Addr) public onlyOwner {
+        erc20Addr = _erc20Addr;
+    }
+
+    function updateInvestments(address funder, uint256 amountToUpdate) external {
+        require(msg.sender == erc20Addr, "Only erc20Addr can update.");
+        investments[funder] = amountToUpdate;
     }
 }

@@ -44,6 +44,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getFundSuccess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -86,11 +99,42 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_erc20Addr",
+						"type": "address"
+					}
+				],
+				"name": "setErc20Addr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "newOwner",
 						"type": "address"
 					}
 				],
 				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "funder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountToUpdate",
+						"type": "uint256"
+					}
+				],
+				"name": "updateInvestments",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -113,7 +157,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contract/fund/FundMe.sol": "FunMe"
+			"contract/fund/FundMe.sol": "FundMe"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -136,11 +180,11 @@
 			]
 		},
 		"contract/fund/FundMe.sol": {
-			"keccak256": "0x7b24d0306499abce02a93386f34968c57f906bab7b8636b87574b35f9335f481",
+			"keccak256": "0x7e0f1dbbb45981a517a5ee3364562eecaf93198e7189a780b3ff3f1ff6fe7ee9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4b86bee7af5fcec59e041ec9211729c8d279b1644d84f5836155109fd043e9eb",
-				"dweb:/ipfs/QmdXvJujUF5BAgdocnhjd1P1VARzrVUnBJrUk59R9KZv5d"
+				"bzz-raw://ab0e41fa76113021eb98e54cafed35e9f13252b3d2334ff0d8fc2462f94b7696",
+				"dweb:/ipfs/QmQTnLbBVU3jruLHfSrPXqMkRBrPjz17DGAGk4vWHSwEJC"
 			]
 		}
 	},
